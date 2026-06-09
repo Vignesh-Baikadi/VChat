@@ -1,0 +1,229 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+function Register() {
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const getPasswordStrength = (password) => {
+  if (!password) return "";
+
+  let score = 0;
+    if (password.length >= 8) score++;
+    if (/[a-z]/.test(password)) score++;
+    if (/[A-Z]/.test(password)) score++;
+    if (/[0-9]/.test(password)) score++;
+    if (/[^A-Za-z0-9]/.test(password)) score++;
+    if (score <= 2) return "Weak";
+    if (score <= 4) return "Medium";
+    return "Strong";
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    console.log(formData);
+  };
+
+  return (
+    <div className="min-h-screen bg-[#17212B] flex items-center justify-center px-4">
+      <div className="w-full max-w-md bg-[#232E3C] rounded-3xl p-8 shadow-2xl">
+
+        {/* Logo */}
+        <div className="flex justify-center mb-8">
+          <div className="h-20 w-20 rounded-full bg-[#3390EC] flex items-center justify-center">
+            <svg
+              xmlns="https://vinitkumarpatwa.netlify.app/apps/vchat/assets/images/logo.png"
+              fill="white"
+              viewBox="0 0 24 24"
+              className="w-10 h-10"
+            >
+              <path d="M21.944 2.506a1.5 1.5 0 0 0-1.604-.222L2.897 10.06a1.5 1.5 0 0 0 .142 2.796l4.89 1.63 1.63 4.89a1.5 1.5 0 0 0 2.796.142l7.776-17.443a1.5 1.5 0 0 0-.187-1.569zM9.614 13.326l8.79-7.286-6.502 9.29-.985-2.956-1.303-.434z" />
+            </svg>
+          </div>
+        </div>
+
+        <h1 className="text-3xl font-semibold text-white text-center">
+          Create Account
+        </h1>
+
+        <p className="text-center text-[#AAB2BD] mt-2 mb-8">
+          Join and start chatting today
+        </p>
+
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-5"
+        >
+          {/* Username */}
+          <div>
+            <label className="block text-sm text-[#AAB2BD] mb-2">
+              Username
+            </label>
+
+            <input
+              type="text"
+              name="username"
+              placeholder="Enter username"
+              value={formData.username}
+              onChange={handleChange}
+              className="
+                w-full
+                px-4
+                py-3
+                bg-[#17212B]
+                border
+                border-[#2B5278]
+                rounded-xl
+                text-white
+                focus:outline-none
+                focus:border-[#3390EC]
+              "
+            />
+          </div>
+
+          {/* Email */}
+          <div>
+            <label className="block text-sm text-[#AAB2BD] mb-2">
+              Email
+            </label>
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              value={formData.email}
+              onChange={handleChange}
+              className="
+                w-full
+                px-4
+                py-3
+                bg-[#17212B]
+                border
+                border-[#2B5278]
+                rounded-xl
+                text-white
+                focus:outline-none
+                focus:border-[#3390EC]
+              "
+            />
+          </div>
+
+          {/* Password */}
+          <div>
+            <label className="block text-sm text-[#AAB2BD] mb-2">
+              Password
+            </label>
+
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter password"
+              value={formData.password}
+              onChange={handleChange}
+              className="
+                w-full
+                px-4
+                py-3
+                bg-[#17212B]
+                border
+                border-[#2B5278]
+                rounded-xl
+                text-white
+                focus:outline-none
+                focus:border-[#3390EC]
+              "
+            />
+
+            {/* Password Strength */}
+        {formData.password && (
+            <p
+                className={`mt-2 text-sm font-medium ${
+                getPasswordStrength(formData.password) === "Weak"
+                    ? "text-red-400"
+                    : getPasswordStrength(formData.password) === "Medium"
+                    ? "text-yellow-400"
+                    : "text-green-400"
+                }`}
+            >
+                Strength: {getPasswordStrength(formData.password)}
+            </p>
+        )}
+          </div>
+
+          {/* Confirm Password */}
+          <div>
+            <label className="block text-sm text-[#AAB2BD] mb-2">
+              Confirm Password
+            </label>
+
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              className="
+                w-full
+                px-4
+                py-3
+                bg-[#17212B]
+                border
+                border-[#2B5278]
+                rounded-xl
+                text-white
+                focus:outline-none
+                focus:border-[#3390EC]
+              "
+            />
+          </div>
+
+          {/* Register Button */}
+          <button
+            type="submit"
+            className="
+              w-full
+              py-3
+              rounded-xl
+              bg-[#3390EC]
+              hover:bg-[#2481DB]
+              text-white
+              font-medium
+              transition
+            "
+          >
+            Create Account
+          </button>
+        </form>
+
+        <p className="text-center mt-6 text-[#AAB2BD]">
+          Already have an account?{" "}
+          <Link
+            to="/login"
+            className="text-[#3390EC] font-medium"
+          >
+            Login
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default Register;
