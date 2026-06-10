@@ -1,8 +1,20 @@
 const express = require("express");
+const dotenv = require("dotenv");
+const connectDB = require("./config/db");
+const authRoutes = require("./routes/authRoutes");
+
+
+// Load environment variables
+dotenv.config();
+// Connect Database
+connectDB();
 
 const app = express();
 
 app.use(express.json());
+
+// All auth routes will start with /api/auth
+app.use("/api/auth", authRoutes);
 
 const PORT = 5000;
 
