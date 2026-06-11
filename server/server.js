@@ -2,7 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
-
+const cors = require("cors");
 
 // Load environment variables
 dotenv.config();
@@ -10,6 +10,12 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 
 app.use(express.json());
 
@@ -20,15 +26,6 @@ const PORT = 5000;
 
 app.get("/", (req, res) => {
   res.send("Server is running...");
-});
-
-app.post("/api/auth/register", (req, res) => {
-  console.log(req.body);
-
-  res.json({
-    success: true,
-    message: "User registered successfully",
-  });
 });
 
 app.listen(PORT, () => {

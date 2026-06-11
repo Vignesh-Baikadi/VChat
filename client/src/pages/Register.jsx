@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { registerUser } from "../services/authService";
+
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -16,6 +18,7 @@ function Register() {
     });
   };
 
+  //cheacks for password strength
   const getPasswordStrength = (password) => {
   if (!password) return "";
 
@@ -30,7 +33,9 @@ function Register() {
     return "Strong";
   };
 
-  const handleSubmit = (e) => {
+
+  //handles submit 
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
@@ -38,7 +43,32 @@ function Register() {
       return;
     }
 
-    console.log(formData);
+    try {
+      // Only send fields required by backend
+      const userData = {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+      };
+
+      const data = await registerUser(userData);
+
+      alert(data.message);
+
+      setFormData({
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+
+    } catch (error) {
+      // Display backend error if available
+      alert(
+        error.response?.data?.message ||
+        "Registration failed"
+      );
+    }
   };
 
   return (
