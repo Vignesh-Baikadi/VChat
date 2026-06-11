@@ -1,18 +1,34 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import { loginUser } from "../services/authService";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log({
-      email,
-      password,
-    });
+    try {
+      const data = await loginUser({
+        email,
+        password,
+      });
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      alert(data.message);
+      navigate("/chat");
+      
+    } catch (error) {
+      alert(
+        error.response?.data?.message ||
+        "Login failed"
+      );
+    }
   };
+
 
   return (
     <div className="min-h-screen bg-[#17212B] flex items-center justify-center px-4">

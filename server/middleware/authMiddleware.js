@@ -10,11 +10,9 @@ const protect = async (req, res, next) => {
     if (
       req.headers.authorization &&
       req.headers.authorization.startsWith("Bearer")
-    ) {
-      // Extract token from header
+    ) 
+    { 
       token = req.headers.authorization.split(" ")[1];
-
-      // Verify token
       const decoded = jwt.verify(
         token,
         process.env.JWT_SECRET
@@ -23,7 +21,6 @@ const protect = async (req, res, next) => {
       // Store decoded user data in request object
       req.user = await User.findById(decoded.userId).select("-password");
 
-      // Move to next middleware/route
       next();
     } else {
       return res.status(401).json({

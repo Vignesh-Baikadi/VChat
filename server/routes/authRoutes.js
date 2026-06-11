@@ -13,5 +13,6 @@ router.post("/login", loginUser);
 // GET /api/auth/profile
 router.get("/profile", protect, getProfile);
 
+
 // Export router
 module.exports = router;

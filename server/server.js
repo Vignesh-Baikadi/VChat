@@ -1,26 +1,23 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+
 const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
+const messageRoutes = require("./routes/messageRoutes");
+
 const cors = require("cors");
 
-// Load environment variables
 dotenv.config();
-// Connect Database
 connectDB();
-
 const app = express();
-
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-  })
-);
-
+app.use(cors({origin: "http://localhost:5173",}));
 app.use(express.json());
 
 // All auth routes will start with /api/auth
 app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/messages", messageRoutes);
 
 const PORT = 5000;
 
