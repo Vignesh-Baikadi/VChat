@@ -1,5 +1,7 @@
 import { useState,useEffect } from "react"
 import { getMessages,logoutUser,sendMessage,} from "../services/authService"
+import socket from "../services/socket";
+
 
 import Sidebar from "../components/Sidebar";
 import ChatHeader from "../components/ChatHeader";
@@ -19,6 +21,7 @@ function Chat() {
   
   //handles Logout
   const handleLogout = () => {logoutUser();navigate("/login");};
+
   // handles the message send by the user
   const handleSendMessage = async (content) => {
     if (!selectedUser) return;
@@ -73,6 +76,19 @@ function Chat() {
         stopResizing
       );
     };
+
+    useEffect(() => {
+      socket.on("connect", () => {
+        console.log("Connected:", socket.id);
+        console.log("Current User:", currentUser);
+        console.log("Current User ID:", currentUser._id);
+        socket.emit("userJoined", currentUser._id);
+      });
+
+      return () => {
+        socket.off("connect");
+      };
+    }, []);
   
   // fetches messages from the backend
   useEffect(() => {
@@ -96,7 +112,6 @@ function Chat() {
   return (
     <div className="h-screen bg-[#17212B] flex overflow-hidden">
       <NavigationRail 
-        // handleLogout={handleLogout}
         activeSection = {activeSection}
         setActiveSection = {setActiveSection}  
       />
