@@ -4,38 +4,40 @@ import { logoutUser } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 import ChatItem from "./ChatItem";
 
-function Sidebar({selectedUser,setSelectedUser}) {
-
+function Sidebar({selectedUser,setSelectedUser,sidebarWidth,setSidebarWidth,}) {
+console.log("Sidebar Render");
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   const currentUser = JSON.parse(localStorage.getItem("user"));
-
-  const handleLogout = () => {logoutUser();navigate("/login");};
   
   //Filters users acc to search keywords
   const filteredUsers = users.filter(
     (user) =>
       user.username.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  const handleLogout = () => {logoutUser();navigate("/login");};
   useEffect(() => {
     const fetchUsers = async () => {
-      try {
-        const data = await getUsers();
-        console.log(data.users);
-        setUsers(data.users);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  console.time("Fetch Users");
+
+  try {
+    const data = await getUsers();
+
+    setUsers(data.users);
+
+    console.timeEnd("Fetch Users");
+  } catch (error) {
+    console.error(error);
+  }
+};
     fetchUsers();
   }, []);
-
+  
 
   return (
-    <div className="w-96 bg-[#232E3C] border-r border-[#2B5278] flex flex-col">
+    <div style={{ width: `${sidebarWidth}px` } } className="bg-[#232E3C] border-r border-[#2B5278] flex flex-col">
 
       <div className="p-4 border-b border-[#2B5278] flex items-center justify-between">
         <h2 className="text-white text-2xl font-semibold">
@@ -97,16 +99,16 @@ function Sidebar({selectedUser,setSelectedUser}) {
             </div>
           </div>
 
-          <button
-            onClick={handleLogout}
-            className="text-red-400 hover:text-red-300 text-sm"
-          >
+          <button onClick={handleLogout}
+            className="text-red-400 hover:text-red-300 text-sm">
             Logout
           </button>
 
         </div>
       </div>
+      
     </div>
+    
   );
 }
 
