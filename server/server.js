@@ -28,6 +28,9 @@ const io = new Server(server,{cors :
 
 const onlineUsers = {};
 
+global.io = io;
+global.onlineUsers = onlineUsers;
+
 io.on("connection", (socket) => {
 
   console.log("User Connected:", socket.id);

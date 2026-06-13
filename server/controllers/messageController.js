@@ -10,6 +10,14 @@ const sendMessage = async (req, res) => {
       content,
     });
 
+    const receiverSocket = global.onlineUsers[receiverId];
+
+    if(receiverSocket){
+      global.io.
+        to(receiverSocket).emit("newMessage",message);
+    }
+
+
     res.status(201).json({
       success: true,
       message,

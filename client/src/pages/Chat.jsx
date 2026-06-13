@@ -16,6 +16,7 @@ function Chat() {
   const [selectedUser, setSelectedUser] = useState(null);
   const [messages, setMessages] = useState([]);
   const [currentUser] = useState(JSON.parse(localStorage.getItem("user")));
+  console.log("Current User:", currentUser);
   const [sidebarWidth, setSidebarWidth] = useState(380);
   const [activeSection, setActiveSection] = useState("chats");
   
@@ -77,16 +78,35 @@ function Chat() {
       );
     };
 
+    //for Socket id printing in the console and terminal
     useEffect(() => {
       socket.on("connect", () => {
         console.log("Connected:", socket.id);
-        console.log("Current User:", currentUser);
-        console.log("Current User ID:", currentUser._id);
-        socket.emit("userJoined", currentUser._id);
+        console.log("Current User:", currentUser.username);
+        console.log("Current User ID:", currentUser.id);
+        socket.emit("userJoined", currentUser.id);
       });
 
       return () => {
         socket.off("connect");
+      };
+    }, []);
+
+    //For real time messages
+    useEffect(() => {
+      socket.on("newMessage", (message) => {
+        console.log(
+          "Real-time message received:",
+          message
+        );
+        setMessages((prev) => [
+          ...prev,
+          message,
+        ]);
+
+      });
+      return () => {
+        socket.off("newMessage");
       };
     }, []);
   
