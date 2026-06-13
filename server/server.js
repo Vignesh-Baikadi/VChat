@@ -33,21 +33,21 @@ global.onlineUsers = onlineUsers;
 
 io.on("connection", (socket) => {
 
-  console.log("User Connected:", socket.id);
   socket.on("userJoined", (userId) => {
     onlineUsers[userId] = socket.id;
     console.log("Online Users:", onlineUsers);
-
+    io.emit("onlineUsers",Object.keys(onlineUsers));
   });
 
   socket.on("disconnect", () => {
     for (const userId in onlineUsers) {
       if (onlineUsers[userId] === socket.id) {
         delete onlineUsers[userId];
+        io.emit("onlineUsers",Object.keys(onlineUsers));
         break;
       }
     }
-    console.log("Online Users:", onlineUsers);
+    // console.log("Online Users:", onlineUsers);
 
   });
 });

@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { getUsers } from "../services/authService";
 import { logoutUser } from "../services/authService";
 import { useNavigate } from "react-router-dom";
+import socket from "../services/socket";
 import ChatItem from "./ChatItem";
 
-function Sidebar({selectedUser,setSelectedUser,sidebarWidth,setSidebarWidth,}) {
-console.log("Sidebar Render");
+function Sidebar({selectedUser,setSelectedUser,sidebarWidth,setSidebarWidth,onlineUsers,}) {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
@@ -17,7 +17,11 @@ console.log("Sidebar Render");
     (user) =>
       user.username.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  //Handles logout
   const handleLogout = () => {logoutUser();navigate("/login");};
+
+  //Fetches users in sidebar
   useEffect(() => {
     const fetchUsers = async () => {
   console.time("Fetch Users");
@@ -39,16 +43,19 @@ console.log("Sidebar Render");
   return (
     <div style={{ width: `${sidebarWidth}px` } } className="bg-[#232E3C] border-r border-[#2B5278] flex flex-col">
 
-      <div className="p-4 border-b border-[#2B5278] flex items-center justify-between">
-        <h2 className="text-white text-2xl font-semibold">
+      {/* Header of the Sidebar */}
+      <div className="p-4 flex justify-between items-center">
+        <h2 className="text-white text-3xl font-semibold">
           VChat
         </h2>
 
-        <button className="text-[#AAB2BD] hover:text-white text-xl">
-          +
-        </button>
+        <div className="flex gap-4">
+          <button>➕</button>
+          <button>⋮</button>
+        </div>
       </div>
 
+      {/* Search Bar */}
       <div className="p-4">
         <input
           type="text" placeholder="Search chats..." value={searchTerm}
@@ -56,14 +63,14 @@ console.log("Sidebar Render");
           className="w-full px-4 py-3 rounded-full bg-[#17212B] text-white border border-[#2B5278] focus:outline-none focus:border-[#3390EC]"
         />
       </div>
-
-      <div className="flex-1 overflow-y-auto">
-
-        {/* Returns filteredusers acc to keyword */}
+      
+    <div className="flex-1 overflow-y-auto">
+      {/* Returns filteredusers acc to keyword */}
       {filteredUsers.map((user) => (
         <ChatItem
           key={user._id}
           user={user}
+          onlineUsers = {onlineUsers}
           onClick ={() => setSelectedUser(user)}
           isSelected={selectedUser?._id === user._id}
         />
@@ -75,7 +82,7 @@ console.log("Sidebar Render");
           No users found
         </p>
       )}
-      </div>
+    </div>
 
       {/* Profile Section */}
       <div className="border-t border-[#2B5278] p-4">

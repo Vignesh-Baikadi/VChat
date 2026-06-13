@@ -1,9 +1,12 @@
-function MessageArea({messages,currentUser}) {
+import chatbg from "../assets/chat-app-assets/vchat-bg-2.jpg";
+
+function MessageArea({messages,currentUser,}) {
   return (
     <div className="flex-1 overflow-y-auto p-6 bg-[#17212B]" style={{
-        backgroundImage:"radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)",
-        backgroundSize: "30px 30px",
-    }}
+    backgroundImage: `url(${chatbg})`,
+    backgroundPosition : "center",
+    backgroundSize: "600px",
+  }}
     >
       {messages.length === 0 && (
         <div className="flex justify-center items-center h-full">

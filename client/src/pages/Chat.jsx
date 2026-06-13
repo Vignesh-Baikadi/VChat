@@ -16,9 +16,9 @@ function Chat() {
   const [selectedUser, setSelectedUser] = useState(null);
   const [messages, setMessages] = useState([]);
   const [currentUser] = useState(JSON.parse(localStorage.getItem("user")));
-  console.log("Current User:", currentUser);
   const [sidebarWidth, setSidebarWidth] = useState(380);
   const [activeSection, setActiveSection] = useState("chats");
+  const [onlineUsers, setOnlineUsers] = useState([]);
   
   //handles Logout
   const handleLogout = () => {logoutUser();navigate("/login");};
@@ -80,17 +80,13 @@ function Chat() {
 
     //for Socket id printing in the console and terminal
     useEffect(() => {
-      socket.on("connect", () => {
-        console.log("Connected:", socket.id);
-        console.log("Current User:", currentUser.username);
-        console.log("Current User ID:", currentUser.id);
-        socket.emit("userJoined", currentUser.id);
-      });
+      socket.connect();
+        socket.emit(
+        "userJoined",
+        currentUser.id
+      );
 
-      return () => {
-        socket.off("connect");
-      };
-    }, []);
+    }, [currentUser]);
 
     //For real time messages
     useEffect(() => {
@@ -108,6 +104,26 @@ function Chat() {
       return () => {
         socket.off("newMessage");
       };
+    }, []);
+
+
+    //For indication for users online or offline
+    useEffect(() => {
+      socket.on(
+        "onlineUsers",
+        (users) => {
+          console.log(
+            "Online Users:",
+            users
+          );
+          setOnlineUsers(users);
+        }
+      );
+
+      return () => {
+        socket.off("onlineUsers");
+      };
+
     }, []);
   
   // fetches messages from the backend
@@ -139,7 +155,7 @@ function Chat() {
       {activeSection === "chats" && (
         <>
           <Sidebar
-          
+            onlineUsers = {onlineUsers}
             sidebarWidth={sidebarWidth}
             setSidebarWidth={setSidebarWidth}
             selectedUser={selectedUser}
