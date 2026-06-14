@@ -19,6 +19,7 @@ function Chat() {
   const [sidebarWidth, setSidebarWidth] = useState(380);
   const [activeSection, setActiveSection] = useState("chats");
   const [onlineUsers, setOnlineUsers] = useState([]);
+  const [typingUsers, setTypingUsers] = useState([]);
   
   //handles Logout
   const handleLogout = () => {logoutUser();navigate("/login");};
@@ -80,7 +81,7 @@ function Chat() {
 
     //for Socket id printing in the console and terminal
     useEffect(() => {
-      socket.connect();
+      // socket.connect();
         socket.emit(
         "userJoined",
         currentUser.id

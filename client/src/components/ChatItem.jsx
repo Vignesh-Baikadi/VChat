@@ -1,9 +1,7 @@
 function ChatItem({ user,onClick,isSelected,onlineUsers,}) {
 
   const isOnline =  onlineUsers.includes(user._id);
-  console.log("User Object:", user);
-  console.log("Online Users:", onlineUsers);
-  console.log("Checking:", user._id);
+
   return (
     <div onClick={onClick}
         className={`flex items-center gap-3 p-4 cursor-pointer border-b border-[#2B5278]
@@ -22,15 +20,30 @@ function ChatItem({ user,onClick,isSelected,onlineUsers,}) {
 
 
       {/* User details */}
-      <div className="flex-1">
-        <h3 className="text-white font-medium">
-          {user.username}
-        </h3>
+      <div className="flex-1 min-w-0">
+        <div className="flex justify-between items-center">
+          <h3 className="text-white font-medium truncate">
+            {user.username}
+          </h3>
 
-        {/* Online / Offline Status */}
-        <p className={`text-sm ${ isOnline ? "text-green-400" : "text-[#AAB2BD]"}`}>
-          {isOnline ? "Online" : "Offline"}
+          {/* Last msg time */}
+          <span className="text-xs text-[#AAB2BD]">
+            {user.lastMessageTime
+              ? new Date(
+                  user.lastMessageTime
+                ).toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })
+              : ""}
+          </span>
+        </div>
+
+        {/* Last Message */}
+        <p className="text-sm text-[#AAB2BD] truncate">
+          {user.lastMessage}
         </p>
+
       </div>
 
     </div>
