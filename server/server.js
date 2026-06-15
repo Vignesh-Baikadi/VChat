@@ -31,7 +31,42 @@ const onlineUsers = {};
 global.io = io;
 global.onlineUsers = onlineUsers;
 
+
 io.on("connection", (socket) => {
+  
+  // For Typing to showonly to the chat fir whom the user is typing to
+  socket.on(
+    "typing",
+    ({ senderId, receiverId }) => {
+
+      const receiverSocket =
+        onlineUsers[receiverId];
+
+      if (receiverSocket) {
+        io.to(receiverSocket).emit(
+          "typing",
+          senderId
+        );
+      }
+    }
+  );
+
+
+  //To stop typing
+  socket.on(
+    "stopTyping",
+    ({ senderId, receiverId }) => {
+      const receiverSocket =
+        onlineUsers[receiverId];
+      if (receiverSocket) {
+        io.to(receiverSocket).emit(
+          "stopTyping",
+          senderId
+        );
+      }
+    }
+  );
+
 
   socket.on("userJoined", (userId) => {
     onlineUsers[userId] = socket.id;

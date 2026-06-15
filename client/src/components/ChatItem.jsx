@@ -1,3 +1,5 @@
+import formatMessageTime from "../utils/formatMessageTIme";
+
 function ChatItem({ user,onClick,isSelected,onlineUsers,}) {
 
   const isOnline =  onlineUsers.includes(user._id);
@@ -28,14 +30,9 @@ function ChatItem({ user,onClick,isSelected,onlineUsers,}) {
 
           {/* Last msg time */}
           <span className="text-xs text-[#AAB2BD]">
-            {user.lastMessageTime
-              ? new Date(
-                  user.lastMessageTime
-                ).toLocaleTimeString([], {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })
-              : ""}
+            {formatMessageTime(
+              user.lastMessageTime
+            )}
           </span>
         </div>
 

@@ -15,8 +15,15 @@ function Sidebar({selectedUser,setSelectedUser,sidebarWidth,setSidebarWidth,onli
   //Filters users acc to search keywords
   const filteredUsers = users.filter(
     (user) =>
-      user.username.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+      user.username.toLowerCase().includes(searchTerm.toLowerCase()))
+    .sort((a, b) => {
+    if (!a.lastMessageTime) return 1;
+    if (!b.lastMessageTime) return -1;
+    return (
+      new Date(b.lastMessageTime) -
+      new Date(a.lastMessageTime)
+    );
+  });
 
   //Handles logout
   const handleLogout = () => {logoutUser();navigate("/login");};
