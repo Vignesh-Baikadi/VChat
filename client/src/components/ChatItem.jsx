@@ -1,9 +1,9 @@
 import formatMessageTime from "../utils/formatMessageTIme";
 
-function ChatItem({ user,onClick,isSelected,onlineUsers,}) {
+function ChatItem({ user,onClick,isSelected,onlineUsers,typingUsers,}) {
 
   const isOnline =  onlineUsers.includes(user._id);
-
+  const isTyping = typingUsers.includes(user._id);
   return (
     <div onClick={onClick}
         className={`flex items-center gap-3 p-4 cursor-pointer border-b border-[#2B5278]
@@ -37,8 +37,8 @@ function ChatItem({ user,onClick,isSelected,onlineUsers,}) {
         </div>
 
         {/* Last Message */}
-        <p className="text-sm text-[#AAB2BD] truncate">
-          {user.lastMessage}
+        <p className={`text-sm truncate ${ isTyping ? "text-green-400" : "text-[#AAB2BD]" }`}>
+          {isTyping ? "typing..." : user.lastMessage}
         </p>
 
       </div>

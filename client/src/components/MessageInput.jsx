@@ -21,9 +21,10 @@ function MessageInput({selectedUser,onSendMessage,}) {
       
       <input type="text" value={message} onChange={(e) => {
         setMessage(e.target.value);
-        socket.emit("typing..",{
+        console.log("Typing emitted");
+        socket.emit("typing",{
           senderId : currentUser.id,
-          recieverId : selectedUser._id,
+          receiverId : selectedUser._id,
         });
       }}
         placeholder="Type a message..."

@@ -38,9 +38,10 @@ io.on("connection", (socket) => {
   socket.on(
     "typing",
     ({ senderId, receiverId }) => {
-
-      const receiverSocket =
-        onlineUsers[receiverId];
+      const receiverSocket = onlineUsers[receiverId];
+        console.log("Typing received");
+        console.log(senderId);
+        console.log(receiverId);
 
       if (receiverSocket) {
         io.to(receiverSocket).emit(

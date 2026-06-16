@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import socket from "../services/socket";
 import ChatItem from "./ChatItem";
 
-function Sidebar({selectedUser,setSelectedUser,sidebarWidth,setSidebarWidth,onlineUsers,}) {
+function Sidebar({selectedUser,setSelectedUser,sidebarWidth,setSidebarWidth,onlineUsers,typingUsers,}) {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
@@ -78,6 +78,7 @@ function Sidebar({selectedUser,setSelectedUser,sidebarWidth,setSidebarWidth,onli
           key={user._id}
           user={user}
           onlineUsers = {onlineUsers}
+          typingUsers = {typingUsers}
           onClick ={() => setSelectedUser(user)}
           isSelected={selectedUser?._id === user._id}
         />

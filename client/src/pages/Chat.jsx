@@ -127,6 +127,37 @@ function Chat() {
 
     }, []);
   
+
+    // Listen for typing events from other users
+    useEffect(() => {
+      socket.on("typing", (senderId) => {
+        setTypingUsers((prev) => {
+          if (prev.includes(senderId))
+            return prev;
+          return [...prev, senderId];
+        });
+
+      });
+
+      socket.on(
+        "stopTyping",
+        (senderId) => {
+          setTypingUsers((prev) =>
+            prev.filter(
+              (id) => id !== senderId
+            )
+          );
+
+        }
+      );
+      return () => {
+        socket.off("typing");
+        socket.off("stopTyping");
+      };
+
+    }, []);
+
+
   // fetches messages from the backend
   useEffect(() => {
     const fetchMessages = async () => {
@@ -157,6 +188,7 @@ function Chat() {
         <>
           <Sidebar
             onlineUsers = {onlineUsers}
+            typingUsers = {typingUsers}
             sidebarWidth={sidebarWidth}
             setSidebarWidth={setSidebarWidth}
             selectedUser={selectedUser}
@@ -169,18 +201,30 @@ function Chat() {
           ></div>
 
           <div className="flex-1 flex flex-col">
-            <ChatHeader selectedUser={selectedUser} />
+            {selectedUser ? (
+              <>
+                <ChatHeader selectedUser={selectedUser}/>
+                <MessageArea
+                  messages={messages}
+                  currentUser={currentUser}
+                />
 
-            <MessageArea
-              messages={messages}
-              currentUser={currentUser}
-            />
+                <MessageInput
+                  selectedUser={selectedUser}
+                  onSendMessage={handleSendMessage}
+                />
+              </>
 
-            {selectedUser && (
-              <MessageInput
-                selectedUser={selectedUser}
-                onSendMessage={handleSendMessage}
-              />
+            ) : (
+
+              <div className=" flex-1 flex flex-col items-center justify-center bg-[#18212B] text-[#AAB2BD]">
+                <h1 className="text-4xl font-light mb-4">
+                  VChat
+                </h1>
+                <p className="text-m">
+                  Select a chat to start messaging
+                </p>
+              </div>
             )}
           </div>
         </>
