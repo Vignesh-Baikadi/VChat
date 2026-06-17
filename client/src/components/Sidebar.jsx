@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { getUsers } from "../services/authService";
+// import { getUsers,sendMessage,getMessages } from "../services/authService";
 import { logoutUser } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 import socket from "../services/socket";
 import ChatItem from "./ChatItem";
 
-function Sidebar({selectedUser,setSelectedUser,sidebarWidth,setSidebarWidth,onlineUsers,typingUsers,}) {
-  const [users, setUsers] = useState([]);
+function Sidebar({users,setUsers,selectedUser,setSelectedUser,sidebarWidth,setSidebarWidth,onlineUsers,typingUsers,}) {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
@@ -14,9 +13,7 @@ function Sidebar({selectedUser,setSelectedUser,sidebarWidth,setSidebarWidth,onli
   
   //Filters users acc to search keywords
   const filteredUsers = users.filter(
-    (user) =>
-      user.username.toLowerCase().includes(searchTerm.toLowerCase()))
-    .sort((a, b) => {
+    (user) => user.username.toLowerCase().includes(searchTerm.toLowerCase())).sort((a, b) => {
     if (!a.lastMessageTime) return 1;
     if (!b.lastMessageTime) return -1;
     return (
@@ -27,25 +24,6 @@ function Sidebar({selectedUser,setSelectedUser,sidebarWidth,setSidebarWidth,onli
 
   //Handles logout
   const handleLogout = () => {logoutUser();navigate("/login");};
-
-  //Fetches users in sidebar
-  useEffect(() => {
-    const fetchUsers = async () => {
-  console.time("Fetch Users");
-
-  try {
-    const data = await getUsers();
-
-    setUsers(data.users);
-
-    console.timeEnd("Fetch Users");
-  } catch (error) {
-    console.error(error);
-  }
-};
-    fetchUsers();
-  }, []);
-  
 
   return (
     <div style={{ width: `${sidebarWidth}px` } } className="bg-[#232E3C] border-r border-[#2B5278] flex flex-col">

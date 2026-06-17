@@ -1,4 +1,5 @@
 import axios from "axios";
+import socket from "./socket";
 
 //base backend URL
 const API_URL = "http://localhost:5000/api/auth";
@@ -80,6 +81,7 @@ export const sendMessage = async (
 
 //Logs out the user
 export const logoutUser = () => {
+  socket.disconnect();
   localStorage.removeItem("token");
   localStorage.removeItem("user");
 };

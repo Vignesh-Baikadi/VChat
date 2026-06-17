@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react"
-import { getMessages,logoutUser,sendMessage,} from "../services/authService"
+import { getMessages,logoutUser,sendMessage,getUsers } from "../services/authService"
 import socket from "../services/socket";
 
 
@@ -15,34 +15,48 @@ import SettingsPanel from "../components/SettingsPanel";
 function Chat() {
   const [selectedUser, setSelectedUser] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [users, setUsers] = useState([]);
   const [currentUser] = useState(JSON.parse(localStorage.getItem("user")));
   const [sidebarWidth, setSidebarWidth] = useState(380);
   const [activeSection, setActiveSection] = useState("chats");
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [typingUsers, setTypingUsers] = useState([]);
-  
-  //handles Logout
-  const handleLogout = () => {logoutUser();navigate("/login");};
 
-  // handles the message send by the user
-  const handleSendMessage = async (content) => {
-    if (!selectedUser) return;
-    try {
-      await sendMessage(
-        selectedUser._id,
-        content
+   
+    //handles Logout
+    const handleLogout = () => {logoutUser();navigate("/login");};
+
+    // handles the message send by the user
+    const handleSendMessage = async (content) => {
+      if (!selectedUser) return;
+      try {
+          const response = await sendMessage(
+          selectedUser._id,
+          content
+        );
+      setUsers((prevUsers) =>
+        prevUsers.map((user) =>
+          user._id === selectedUser._id
+            ? {
+                ...user,
+                lastMessage: content,
+                lastMessageTime:
+                  response.message.createdAt,
+              }
+            : user
+        )
       );
 
-      const data = await getMessages(
-        selectedUser._id
-      );
+        const data = await getMessages(
+          selectedUser._id
+        );
 
-      setMessages(data.messages);
+        setMessages(data.messages);
 
-    } catch (error) {
-      console.error(error);
-    }
-  }; 
+      } catch (error) {
+        console.error(error);
+      }
+    }; 
 
     //For Adjustable SideBar
     const startResizing = () => {
@@ -78,34 +92,72 @@ function Chat() {
         stopResizing
       );
     };
+    //Fetches users in sidebar
+    useEffect(() => {
+      const fetchUsers = async () => {
+    console.time("Fetch Users");
+  
+    try {
+      const data = await getUsers();
+  
+      setUsers(data.users);
+  
+      console.timeEnd("Fetch Users");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+      fetchUsers();
+    }, []);
 
     //for Socket id printing in the console and terminal
     useEffect(() => {
-      // socket.connect();
+      socket.connect();
+
+      socket.on("connect", () => {
         socket.emit(
-        "userJoined",
-        currentUser.id
-      );
+          "userJoined",
+          currentUser.id
+        );
+      });
+      
+      return () => {
+        socket.off("connect");
+      };
 
     }, [currentUser]);
 
     //For real time messages
     useEffect(() => {
       socket.on("newMessage", (message) => {
-        console.log(
-          "Real-time message received:",
-          message
+        // Update sidebar preview
+        setUsers((prevUsers) =>
+          prevUsers.map((user) =>
+            user._id === message.sender
+              ? {
+                  ...user,
+                  lastMessage: message.content,
+                  lastMessageTime:
+                    message.createdAt,
+                }
+              : user
+          )
         );
-        setMessages((prev) => [
-          ...prev,
-          message,
-        ]);
 
+        // Only show message if this chat is open
+        if ( selectedUser && selectedUser._id === message.sender) {
+          setMessages((prev) => [
+            ...prev,
+            message,
+          ]);
+        }
       });
+
       return () => {
         socket.off("newMessage");
       };
-    }, []);
+
+    }, [selectedUser]);
 
 
     //For indication for users online or offline
@@ -158,23 +210,23 @@ function Chat() {
     }, []);
 
 
-  // fetches messages from the backend
-  useEffect(() => {
-    const fetchMessages = async () => {
-      if (!selectedUser) return;
+    // fetches messages from the backend
+    useEffect(() => {
+      const fetchMessages = async () => {
+        if (!selectedUser) return;
 
-      try {
-        const data = await getMessages(
-          selectedUser._id
-        );
+        try {
+          const data = await getMessages(
+            selectedUser._id
+          );
 
-        setMessages(data.messages);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchMessages();
-  }, [selectedUser]);
+          setMessages(data.messages);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchMessages();
+    }, [selectedUser]);
 
 
   return (
@@ -187,6 +239,8 @@ function Chat() {
       {activeSection === "chats" && (
         <>
           <Sidebar
+            users = {users}
+            setUsers = {setUsers}
             onlineUsers = {onlineUsers}
             typingUsers = {typingUsers}
             sidebarWidth={sidebarWidth}

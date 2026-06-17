@@ -14,7 +14,7 @@
 2026-06-09
 
 ---
-# Objectives Completed
+### Objectives Completed
 
 Today's goal was to start the VChat (WhatsApp Clone) project from scratch and establish the foundational development environment.
 
@@ -34,7 +34,7 @@ This marked the official beginning of the VChat project.
 
 ---
 
-# Project Vision
+### Project Vision
 
 The long-term goal of the project is to build a production-style real-time chat application using the MERN stack.
 
@@ -75,7 +75,7 @@ Deployment:
 
 ---
 
-# Project Workspace Creation
+### Project Workspace Creation
 
 Created project root folder:
 
@@ -98,7 +98,7 @@ At this stage only the frontend was created.
 
 ---
 
-# React Application Setup
+### React Application Setup
 
 Created React application using Vite.
 
@@ -117,7 +117,7 @@ Language: JavaScript
 
 ---
 
-# Why React?
+### Why React?
 
 Concept learned:
 
@@ -141,7 +141,7 @@ Benefits:
 
 ---
 
-# Why Vite?
+### Why Vite?
 
 Concept learned:
 
@@ -165,7 +165,7 @@ Vite is significantly faster.
 
 ---
 
-# Project Structure Generated
+### Project Structure Generated
 
 Initial structure:
 
@@ -199,7 +199,7 @@ Vite configuration file.
 
 ---
 
-# JavaScript Selection
+## JavaScript Selection
 
 Decision made:
 
@@ -221,7 +221,7 @@ Future upgrade remains possible.
 
 ---
 
-# Dependency Installation
+### Dependency Installation
 
 Installed React Router DOM.
 
@@ -246,7 +246,7 @@ routing functionality.
 
 ---
 
-# Axios Installation
+### Axios Installation
 
 Installed:
 
@@ -275,7 +275,7 @@ Axios simplifies this process.
 
 ---
 
-# Package Management Concepts Learned
+### Package Management Concepts Learned
 
 Understanding developed for:
 
@@ -297,7 +297,7 @@ Never push node_modules to GitHub.
 
 ---
 
-# Git Introduction
+### Git Introduction
 
 Initialized Git repository.
 
@@ -327,7 +327,7 @@ The ability to move between project states.
 
 ---
 
-# .gitignore Creation
+### .gitignore Creation
 
 Created:
 
@@ -353,7 +353,7 @@ Not everything in a project should be pushed to GitHub.
 
 ---
 
-# First Commit
+### First Commit
 
 Created first project commit.
 
@@ -367,7 +367,7 @@ A snapshot of the project at the beginning of development.
 
 ---
 
-# GitHub Integration
+### GitHub Integration
 
 Connected local repository to GitHub.
 
@@ -387,7 +387,7 @@ This created the first cloud backup of the project.
 
 ---
 
-# Git Concepts Learned
+### Git Concepts Learned
 
 ### git add
 
@@ -411,7 +411,7 @@ Primary branch.
 
 ---
 
-# First Successful Push
+### First Successful Push
 
 Verified:
 
@@ -429,7 +429,7 @@ GitHub
 
 ---
 
-# Development Methodology Established
+### Development Methodology Established
 
 Project development rules established:
 
@@ -457,7 +457,7 @@ before writing code.
 
 ---
 
-# Current Stack At End Of Day 1
+## Current Stack At End Of Day 1
 
 Frontend:
 
@@ -490,7 +490,7 @@ Not started
 
 ---
 
-# Current Project Progress
+## Current Project Progress
 
 Estimated Progress:
 
@@ -529,7 +529,7 @@ Pending:
 
 ---
 
-# Key Lessons Learned
+## Key Lessons Learned
 
 1. React applications can be created quickly using Vite.
 
@@ -547,7 +547,7 @@ Pending:
 
 ---
 
-# Next Session Goals (Day 2)
+## Next Session Goals (Day 2)
 
 1. Install Tailwind CSS
 
@@ -573,10 +573,10 @@ A structured React frontend with professional routing and authentication UI read
 ## Date
 2026-06-10
 ---
-# Objectives Completed
+## Objectives Completed
 Today's goal was to continue frontend development, improve project architecture, build authentication UI, and initialize the backend server.
 ---
-# Frontend Progress
+## Frontend Progress
 ## Tailwind CSS Verification
 Verified that Tailwind CSS v4 was correctly installed and configured.
 Confirmed:
@@ -676,7 +676,7 @@ Successfully tested all routes.
 
 
 
-# Login Page Development
+## Login Page Development
 
 
 
@@ -710,7 +710,7 @@ Primary Background:
 
 
 
-#17212B
+##17212B
 
 
 
@@ -718,7 +718,7 @@ Card Background:
 
 
 
-#232E3C
+##232E3C
 
 
 
@@ -726,7 +726,7 @@ Accent Blue:
 
 
 
-#3390EC
+##3390EC
 
 
 
@@ -734,7 +734,7 @@ Accent Hover:
 
 
 
-#2481DB
+##2481DB
 
 
 
@@ -742,7 +742,7 @@ Primary Text:
 
 
 
-#FFFFFF
+##FFFFFF
 
 
 
@@ -750,7 +750,7 @@ Secondary Text:
 
 
 
-#AAB2BD
+##AAB2BD
 
 
 
@@ -792,7 +792,7 @@ React concepts practiced:
 
 
 
-# Register Page Development
+## Register Page Development
 
 
 
@@ -834,7 +834,7 @@ Features:
 
 
 
-# Password Strength Validation
+## Password Strength Validation
 
 
 
@@ -952,7 +952,7 @@ React concepts learned:
 
 
 
-# Backend Initialization
+## Backend Initialization
 
 
 
@@ -1056,7 +1056,7 @@ Allows frontend and backend communication.
 
 
 
-# First Express Server
+## First Express Server
 
 
 
@@ -1108,7 +1108,7 @@ Successfully tested in browser.
 
 
 
-# Express Concepts Learned
+## Express Concepts Learned
 
 
 
@@ -1150,7 +1150,7 @@ POST /api/auth/register
 
 
 
-# Middleware Introduction
+## Middleware Introduction
 
 
 
@@ -1214,7 +1214,7 @@ req.body
 
 
 
-# First API Endpoint
+## First API Endpoint
 
 
 
@@ -1278,7 +1278,7 @@ Response:
 
 
 
-# Debugging Experience
+## Debugging Experience
 
 
 
@@ -1338,13 +1338,13 @@ Before testing APIs:
 
 4. Test root route in browser.
 ---
-# Git Progress
+## Git Progress
 Prepared project for Git commit and push.
 Suggested commit message:
 git commit -m "Setup authentication UI and initialize Express backend"
 
 ---
-# Current Architecture
+## Current Architecture
 Frontend:
 React
 Vite
@@ -1366,7 +1366,7 @@ Real-Time:
 Not started
 Socket.IO pending
 ---
-# Current Project Progress
+## Current Project Progress
 Estimated Progress:
 20%
 Completed:
@@ -1388,7 +1388,7 @@ Pending:
 * Chat Features
 * Socket.IO
 ---
-# Next Session Goals
+## Next Session Goals
 Phase 6 Continuation
 1. Create professional backend architecture
 server/
@@ -1427,7 +1427,7 @@ User registration working from React frontend to MongoDB database
 
 ---
 
-# Objectives Completed
+## Objectives Completed
 
 Today's goal was to move beyond a basic Express server and build a real authentication backend connected to MongoDB Atlas.
 
@@ -1447,7 +1447,7 @@ This marks the completion of the first fully functional backend authentication f
 
 ---
 
-# Backend Architecture Refactor
+## Backend Architecture Refactor
 
 ## Why Architecture Matters
 
@@ -1596,7 +1596,7 @@ Used for:
 
 ---
 
-# MongoDB Atlas Setup
+## MongoDB Atlas Setup
 
 ## Atlas Project Created
 
@@ -1646,7 +1646,7 @@ Allows development connections from any IP address.
 
 ---
 
-# Mongoose Integration
+## Mongoose Integration
 
 ## Package Installed
 
@@ -1677,7 +1677,7 @@ Benefits:
 
 ---
 
-# Database Connection
+## Database Connection
 
 Created:
 
@@ -1714,7 +1714,7 @@ Keep sensitive information outside source code.
 
 ---
 
-# User Model Creation
+## User Model Creation
 
 Created:
 
@@ -1773,7 +1773,7 @@ updatedAt
 
 ---
 
-# Registration System
+## Registration System
 
 ## Controller Created
 
@@ -1815,7 +1815,7 @@ Tested successfully using Thunder Client.
 
 ---
 
-# Password Security
+## Password Security
 
 ## Package Installed
 
@@ -1827,7 +1827,7 @@ npm install bcryptjs
 
 ---
 
-# Password Hashing
+## Password Hashing
 
 ## Problem
 
@@ -1907,7 +1907,7 @@ Return Success
 
 ---
 
-# Login System
+## Login System
 
 ## Login Controller Created
 
@@ -1987,7 +1987,7 @@ Invalid Credentials
 
 ---
 
-# JWT Authentication
+## JWT Authentication
 
 ## Package Installed
 
@@ -1999,7 +1999,7 @@ npm install jsonwebtoken
 
 ---
 
-# JWT Secret
+## JWT Secret
 
 Added to:
 
@@ -2013,7 +2013,7 @@ Sign and verify tokens.
 
 ---
 
-# JWT Generation
+## JWT Generation
 
 Implemented inside:
 
@@ -2067,7 +2067,7 @@ Client Stores Token
 
 ---
 
-# Authentication Middleware
+## Authentication Middleware
 
 Created:
 
@@ -2081,7 +2081,7 @@ Protect private routes.
 
 ---
 
-# JWT Verification
+## JWT Verification
 
 Implemented:
 
@@ -2101,7 +2101,7 @@ Allow / Deny
 
 ---
 
-# Protected Routes
+## Protected Routes
 
 Created:
 
@@ -2129,7 +2129,7 @@ getProfile()
 
 ---
 
-# Testing Authorization
+## Testing Authorization
 
 ## Without Token
 
@@ -2158,7 +2158,7 @@ Protected route worked successfully.
 
 ---
 
-# Middleware Improvement
+## Middleware Improvement
 
 Updated middleware to:
 
@@ -2191,7 +2191,7 @@ Examples:
 
 ---
 
-# MongoDB Compass Usage
+## MongoDB Compass Usage
 
 Connected Compass to MongoDB Atlas.
 
@@ -2206,7 +2206,7 @@ This provided visual confirmation that APIs were working correctly.
 
 ---
 
-# Concepts Learned Today
+## Concepts Learned Today
 
 ## Backend Concepts
 
@@ -2267,7 +2267,7 @@ Moves execution to the next middleware.
 
 ---
 
-# Debugging Experience
+## Debugging Experience
 
 ## MongoDB Connection Error
 
@@ -2308,7 +2308,7 @@ Removed duplicate entry and retained:
 
 ---
 
-# Current Backend Capabilities
+## Current Backend Capabilities
 
 Working Features:
 
@@ -2332,7 +2332,7 @@ Working Features:
 
 ---
 
-# Current Project Progress
+## Current Project Progress
 
 Estimated Progress:
 
@@ -2342,7 +2342,7 @@ Estimated Progress:
 
 ---
 
-# Current Tech Stack
+## Current Tech Stack
 
 Frontend:
 
@@ -2375,7 +2375,7 @@ Tools:
 
 ---
 
-# Next Session Goals
+## Next Session Goals
 
 ## Authentication Completion
 
@@ -2436,7 +2436,7 @@ This will be the first true frontend-to-backend integration of the VChat applica
 
 ---
 
-# Mentor Notes / Project Preferences (Remembered For Future Sessions)
+## Mentor Notes / Project Preferences (Remembered For Future Sessions)
 
 Development preferences established today:
 
@@ -2457,7 +2457,7 @@ Phase 8 - Chat Application Core
 
 ---
 
-# Session Goals
+## Session Goals
 
 The goal of this session was to transform the application from a static chat UI into a functional messaging application by:
 
@@ -2470,7 +2470,7 @@ The goal of this session was to transform the application from a static chat UI 
 
 ---
 
-# Features Completed
+## Features Completed
 
 ## 1. User Discovery System
 
@@ -2514,7 +2514,7 @@ API returns:
 
 ### Concepts Learned
 
-#### MongoDB $ne Operator
+### MongoDB $ne Operator
 
 ```js
 _id: { $ne: req.user._id }
@@ -2528,7 +2528,7 @@ Except
 Current logged-in user
 ```
 
-#### Protected Routes
+### Protected Routes
 
 Used authentication middleware before controller execution.
 
@@ -2560,7 +2560,7 @@ using Axios.
 
 ### React Concepts Learned
 
-#### useEffect()
+### useEffect()
 
 Used for loading users when Sidebar component mounts.
 
@@ -2577,7 +2577,7 @@ Run once
 When component loads
 ```
 
-#### State Management
+### State Management
 
 Created:
 
@@ -2971,7 +2971,7 @@ through the actual UI.
 
 ---
 
-# Bugs Encountered & Fixed
+## Bugs Encountered & Fixed
 
 ## 1. React JSX Outside Return
 
@@ -3033,7 +3033,7 @@ Removed duplicate attribute.
 
 ---
 
-# UI Improvements Completed
+## UI Improvements Completed
 
 ### Sidebar
 
@@ -3056,7 +3056,7 @@ Removed duplicate attribute.
 
 ---
 
-# Pending UI Improvements
+## Pending UI Improvements
 
 ## High Priority
 
@@ -3094,7 +3094,7 @@ Edit profile and account options.
 
 ---
 
-# Future Features
+## Future Features
 
 ## Phase 9 - Socket.IO
 
@@ -3121,7 +3121,7 @@ without refresh.
 
 ---
 
-# Progress Estimate
+## Progress Estimate
 
 Authentication: 90%
 
@@ -3143,7 +3143,7 @@ Overall Project Progress:
 
 ---
 
-# Mentoring Preferences Established During Session
+## Mentoring Preferences Established During Session
 
 The following guidance should be followed in future sessions:
 
@@ -3227,7 +3227,7 @@ rather than generic dashboard-style layouts.
 
 ---
 
-# End Of Day Status
+## End Of Day Status
 
 VChat is now a functional database-backed chat application capable of:
 
@@ -3255,7 +3255,7 @@ Transform the chat application from a traditional request-response messaging sys
 
 Installed Socket.IO on the backend and integrated it with the Express server.
 
-#### Packages Installed
+### Packages Installed
 
 Server:
 
@@ -4064,3 +4064,569 @@ Theme System ❌
 ## End of Day Status
 
 Project has evolved from a standard MERN chat application into a real-time chat platform with Socket.IO integration, online user tracking, and the first stage of WhatsApp-inspired UI customization.
+
+# Day 7 - Real-Time Architecture Fixes & WhatsApp Behavior Improvements
+
+## Session Goal
+
+The focus of this session was not adding new major features but improving the application's real-time architecture and making chat behavior closer to WhatsApp Web.
+
+Several critical bugs affecting messaging, typing indicators, online status, and sidebar synchronization were identified and fixed.
+
+---
+
+## Features & Improvements Completed
+
+## 1. WhatsApp Style Sidebar Preview System
+
+## Problem
+
+Previously, the sidebar only displayed usernames and online/offline status.
+
+There was no:
+
+* Last message preview
+* Last message timestamp
+* WhatsApp-style conversation list
+
+## Solution
+
+Refactored the sidebar to display:
+
+* User name
+* Last message preview
+* Last message timestamp
+* Typing indicator placeholder
+* Online status indicator (green dot)
+
+## UI Changes
+
+Before:
+
+User Name
+Online
+
+After:
+
+User Name          10:42 PM
+Last Message
+
+## Concepts Learned
+
+* Dynamic rendering
+* Conditional UI rendering
+* WhatsApp conversation list architecture
+* User state synchronization
+
+---
+
+## 2. WhatsApp Style Timestamp Formatting
+
+## Problem
+
+Messages displayed raw timestamps.
+
+Example:
+
+18/06/2026 22:15
+
+## Solution
+
+Created utility functions to format timestamps similarly to WhatsApp.
+
+Examples:
+
+Today → 10:42 PM
+
+Yesterday → Yesterday
+
+Older Messages → Date
+
+## Files Created
+
+formatMessageTime.js
+
+formatChatDate.js
+
+## Concepts Learned
+
+* Date manipulation
+* Utility functions
+* Separation of concerns
+* Reusable formatting logic
+
+---
+
+## 3. WhatsApp Date Separators
+
+### Problem
+
+Messages appeared as one continuous stream.
+
+Example:
+
+Hello
+Hi
+Good Morning
+Good Night
+
+### Solution
+
+Implemented automatic date grouping.
+
+Examples:
+
+TODAY
+
+Hello
+
+Hi
+
+YESTERDAY
+
+Good Morning
+
+### Logic Implemented
+
+Compare:
+
+Current Message Date
+
+vs
+
+Previous Message Date
+
+If different:
+
+Show separator.
+
+### Concepts Learned
+
+* Array traversal
+* Previous item comparison
+* Dynamic grouping
+* Date-based rendering
+
+---
+
+## 4. Message Bubble Improvements
+
+### Improvements
+
+Implemented:
+
+* Better bubble width
+* Better spacing
+* Sender/receiver alignment
+* Timestamp inside message bubble
+* Improved WhatsApp-style shape
+
+### Notes
+
+Multiple UI experiments were attempted.
+
+Some CSS approaches caused layout issues and were reverted.
+
+Final decision:
+
+Keep current bubble implementation stable and postpone pixel-perfect WhatsApp UI polishing until functionality is complete.
+
+### Lesson Learned
+
+Avoid spending excessive development time on minor UI inconsistencies before core functionality is finished.
+
+---
+
+## 5. Typing Indicator System
+
+### Problem
+
+Typing indicator appeared correctly but never disappeared.
+
+Example:
+
+Roger
+typing...
+
+would remain permanently.
+
+### Root Cause
+
+stopTyping event was only emitted when the user pressed Send.
+
+### Solution
+
+Implemented typing timeout architecture.
+
+### New Logic
+
+User types
+
+↓
+
+typing emitted
+
+↓
+
+1.5 second timer starts
+
+↓
+
+User continues typing
+
+↓
+
+Timer resets
+
+↓
+
+User stops typing
+
+↓
+
+stopTyping emitted
+
+↓
+
+typing... disappears
+
+### React Concepts Learned
+
+useRef()
+
+setTimeout()
+
+clearTimeout()
+
+Debouncing
+
+### Industry Concept Learned
+
+Debounce Pattern
+
+Used in:
+
+* WhatsApp
+* Telegram
+* Discord
+* Messenger
+
+---
+
+## 6. Major Message Routing Bug Fix
+
+### Critical Bug Found
+
+Incoming messages appeared in whichever chat was currently open.
+
+Example:
+
+Viewing Roger chat
+
+↓
+
+John sends message
+
+↓
+
+Message appeared inside Roger conversation
+
+↓
+
+Switch chat
+
+↓
+
+Message disappeared
+
+### Root Cause
+
+All incoming messages were blindly added to:
+
+setMessages()
+
+without checking the active conversation.
+
+### Solution
+
+Implemented conversation validation.
+
+### New Logic
+
+Message arrives
+
+↓
+
+Check sender
+
+↓
+
+Is sender currently selected?
+
+YES
+
+↓
+
+Show in MessageArea
+
+NO
+
+↓
+
+Update sidebar only
+
+### Importance
+
+This was a major architecture bug.
+
+Fixing it prevents future issues involving:
+
+* Unread counts
+* Read receipts
+* Notification systems
+* Conversation management
+
+### Concepts Learned
+
+Message routing
+
+Conversation ownership
+
+Real-time event filtering
+
+State isolation
+
+---
+
+## 7. Sidebar Real-Time Synchronization
+
+### Problem
+
+Sender saw sidebar updates.
+
+Receiver did not.
+
+Sidebar remained stale until refresh.
+
+### Solution
+
+Refactored state ownership.
+
+### Architecture Before
+
+Sidebar
+
+owns users state
+
+Chat
+
+owns messages state
+
+### Architecture After
+
+Chat
+
+owns users state
+
+owns messages state
+
+↓
+
+passes data to Sidebar
+
+### React Concept Learned
+
+Lifting State Up
+
+This is a very important React architecture pattern.
+
+### Benefits
+
+Prepared the project for:
+
+* Unread counts
+* Read receipts
+* Conversation ordering
+* Notifications
+
+---
+
+## 8. Online Users & Presence System Investigation
+
+### Bug Found
+
+Logging out did not immediately mark the user offline.
+
+### Investigation
+
+Discovered issues around:
+
+Socket disconnect handling
+
+Socket reconnect behavior
+
+autoConnect configuration
+
+Connection lifecycle management
+
+### Findings
+
+Socket presence system requires a proper connect/disconnect flow.
+
+Current architecture improved significantly but still needs additional testing to fully mimic WhatsApp presence handling.
+
+### Concepts Learned
+
+Socket lifecycle
+
+Connection state
+
+Presence systems
+
+Disconnect events
+
+Reconnect behavior
+
+---
+
+## 9. React Fragment Key Warning Fix
+
+### Issue
+
+React warning:
+
+Each child in a list should have a unique key.
+
+### Solution
+
+Corrected key placement during message rendering.
+
+### Concepts Learned
+
+React reconciliation
+
+Virtual DOM updates
+
+Key-based rendering
+
+Performance optimization
+
+---
+
+## Bugs Fixed During Day 7
+
+Fixed:
+
+✅ Typing indicator never disappearing
+
+✅ Sidebar sender updates
+
+✅ Sidebar receiver updates
+
+✅ Wrong messages appearing in active chat
+
+✅ Message routing logic
+
+✅ Date separator rendering
+
+✅ React key warning
+
+Partially Investigated:
+
+🟡 Socket logout/login presence behavior
+
+Pending:
+
+🔴 Smart scrolling
+
+🔴 Scroll-to-bottom button
+
+🔴 Unread message count
+
+🔴 Delivered status
+
+🔴 Read receipts
+
+🔴 Conversation auto-reordering
+
+🔴 WhatsApp UI polish phase
+
+---
+
+## Concepts Learned Today
+
+React
+
+* useRef
+* Lifting State Up
+* Conditional Rendering
+* State Synchronization
+* React Fragments
+* Keys in Lists
+
+Socket.IO
+
+* Real-time events
+* Typing events
+* stopTyping events
+* Disconnect handling
+* Presence management
+
+Architecture
+
+* Single Source of Truth
+* Message Routing
+* Event Filtering
+* Debouncing
+* Conversation Ownership
+
+UI/UX
+
+* WhatsApp conversation structure
+* Date grouping
+* Message organization
+* Real-time sidebar behavior
+
+---
+
+## Current Project Status
+
+Phase: Chat Application Core + Real-Time Improvements
+
+Completed:
+
+* Authentication
+* Authorization
+* User Listing
+* Real-Time Messaging
+* Online Status
+* Typing Indicator
+* Sidebar Preview
+* Date Separators
+* Real-Time Message Routing
+
+In Progress:
+
+* Presence System
+* Conversation Ordering
+* Smart Scrolling
+
+Upcoming:
+
+* Unread Messages
+* Delivered Ticks
+* Read Receipts
+* Notifications
+* Group Chats
+* File Sharing
+* Final WhatsApp UI Polish
+
+---
+
+## Day 7 Summary
+
+This session focused heavily on architecture rather than visual design.
+
+Several important real-time messaging bugs were fixed, making the application behave much closer to WhatsApp.
+
+The project now has a significantly stronger foundation for implementing unread counts, read receipts, notifications, and advanced real-time features in upcoming sessions.
