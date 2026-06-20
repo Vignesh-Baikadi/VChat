@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-// import { getUsers,sendMessage,getMessages } from "../services/authService";
 import { logoutUser } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 import socket from "../services/socket";
 import ChatItem from "./ChatItem";
+import {MdPersonAddAlt} from "react-icons/md";
+
 
 function Sidebar({users,setUsers,selectedUser,setSelectedUser,sidebarWidth,setSidebarWidth,onlineUsers,typingUsers,}) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,7 +36,7 @@ function Sidebar({users,setUsers,selectedUser,setSelectedUser,sidebarWidth,setSi
         </h2>
 
         <div className="flex gap-4">
-          <button>➕</button>
+          <button><MdPersonAddAlt size={20} className="text-gray-400 "></MdPersonAddAlt></button>
           <button>⋮</button>
         </div>
       </div>
@@ -69,36 +70,6 @@ function Sidebar({users,setUsers,selectedUser,setSelectedUser,sidebarWidth,setSi
         </p>
       )}
     </div>
-
-      {/* Profile Section */}
-      <div className="border-t border-[#2B5278] p-4">
-        <div className="flex items-center justify-between">
-
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-[#3390EC] flex items-center justify-center text-white font-semibold">
-              {currentUser.username
-                .charAt(0)
-                .toUpperCase()}
-            </div>
-
-            <div>
-              <h3 className="text-white text-sm font-medium">
-                {currentUser.username}
-              </h3>
-
-              <p className="text-[#AAB2BD] text-xs">
-                My Profile
-              </p>
-            </div>
-          </div>
-
-          <button onClick={handleLogout}
-            className="text-red-400 hover:text-red-300 text-sm">
-            Logout
-          </button>
-
-        </div>
-      </div>
       
     </div>
     

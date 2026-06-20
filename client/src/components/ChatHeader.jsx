@@ -1,3 +1,5 @@
+import {MdSearch} from "react-icons/md"; 
+
 function ChatHeader({selectedUser}) {
   const name = selectedUser?.username || "Select a User";
   return (
@@ -19,20 +21,7 @@ function ChatHeader({selectedUser}) {
 
       <div className="flex items-center gap-6">
         <button className="text-[#AAB2BD] hover:text-white text-xl">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-5 h-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 5.4 5.4a7.5 7.5 0 0 0 11.25 11.25Z"
-            />
-          </svg>
+          <MdSearch></MdSearch>
         </button>
 
         <button className="text-[#AAB2BD] hover:text-white text-xl">
