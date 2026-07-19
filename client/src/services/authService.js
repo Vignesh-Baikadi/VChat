@@ -2,7 +2,7 @@ import axios from "axios";
 import socket from "./socket";
 
 //base backend URL
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = `${import.meta.env.VITE_API_URL}/auth`;
 
 //Function that helps to send data to backend to register
 export const registerUser = async (userData) => {
@@ -29,7 +29,7 @@ export const getUsers = async () => {
   const token = localStorage.getItem("token");
 
   const response = await axios.get(
-    "http://localhost:5000/api/users",
+    `${import.meta.env.VITE_API_URL}/users`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -45,7 +45,7 @@ export const getMessages = async (userId) => {
   const token = localStorage.getItem("token");
 
   const response = await axios.get(
-    `http://localhost:5000/api/messages/${userId}`,
+    `${import.meta.env.VITE_API_URL}/messages/${userId}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -64,7 +64,7 @@ export const sendMessage = async (
   const token = localStorage.getItem("token");
 
   const response = await axios.post(
-    "http://localhost:5000/api/messages",
+    `${import.meta.env.VITE_API_URL}/messages`,
     {
       receiverId,
       content,
